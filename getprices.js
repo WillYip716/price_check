@@ -41,6 +41,17 @@ async function findItemPrices(item,store) {
     }
     else if(store === "safeway"){
         console.log("contacting safeway");
+
+        let location = $(content).find("span.reserve-nav__current-instore-text");
+        console.log($(location[0]).text());
+
+        /*if($(location[0]).text() !== "1902 W Main St"){
+            await page.click('button#openFulfillmentModalButton',{delay: 2000});
+            await page.type('input.input-search', "85201",{delay: 2000});
+            await page.keyboard.press('Enter',{delay: 2000});
+            await page.click("a[aria-describedby='address_1717']",{delay: 2000});
+        }   */
+        
         $('div.card-body', content).each((index,element) => {
             let productName = $(element).find("h3");
             console.log($(productName[0]).text());
@@ -64,5 +75,5 @@ async function findItemPrices(item,store) {
 }
 
 
-findItemPrices("honey nut cheerios", "frys");
-findItemPrices("honey nut cheerios", "safeway");
+findItemPrices("chicken thighs", "frys");
+findItemPrices("chicken thighs", "safeway");
